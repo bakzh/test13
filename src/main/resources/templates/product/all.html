@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품목록</title>
+  <style>
+    h1 {color: brown; border-bottom: 3px solid black;}
+    table {border: 3px solid black;}
+    td,th {border: 1px solid; padding: 5px;}
+    button {width: 100px; height: 50px; margin: 15px; background-color: black; color: white;}
+  </style>
+</head>
+<body>
+  <div class="product">
+    <h1>상품목록</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>아이디</th>
+        <th>상품명</th>
+        <th>수량</th>
+        <th>가격</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="product : ${list}">
+        <td th:text="${product.pid}"></td>
+        <td><a th:href="@{/products/{pid}(pid = ${product.pid})}" th:text="${product.pname}"></a></td>
+        <td th:text="${product.count}"></td>
+        <td th:text="${product.price}"></td>
+      </tr>
+      </tbody>
+    </table>
+    <div><button id="addBtn">상품등록</button></div>
+  </div>
+  <script>
+      addBtn.addEventListener('click',e=>{
+        location.href = '/products/save';
+      });
+    </script>
+</body>
+</html>
