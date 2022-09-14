@@ -14,9 +14,11 @@ public class EditForm {
   @NotBlank
   private String pname;         //pname VARCHAR2(40) NOT NULL,
   @NotNull
-  @PositiveOrZero
-  private Integer count;        //count NUMBER(3)  NOT NULL,
+  @Positive
+  @Max(9999999999L)
+  private Long count;        //count NUMBER(3)  NOT NULL,
   @NotNull
-  @PositiveOrZero
-  private Integer price;        //price NUMBER(30)   NOT NULL
+  @Positive
+  @Max(9999999999L)
+  private Long price;        //price NUMBER(30)   NOT NULL
 }
