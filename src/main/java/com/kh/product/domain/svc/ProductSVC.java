@@ -39,5 +39,4 @@ public interface ProductSVC {
   int delete(Long pid);
 
   List<Product> findAll();
-
 }

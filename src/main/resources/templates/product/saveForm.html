@@ -15,11 +15,26 @@
 <body>
 <div class="product">
   <h1>상품등록</h1>
-  <form action="" method="post">
+  <form id="saveForm" action="" method="post" th:object="${form}">
+      <div th:if="${#fields.hasGlobalErrors()}">
+        <p class="fieldError" th:each="err:${#fields.globalErrors()}" th:text="${err}"></p>
+      </div>
     <div>
-      <div><label for="">상품명</label><input type="text" name="pname"></div>
-      <div><label for="">수량</label><input type="text" name="count"></div>
-      <div><label for="">가격</label><input type="text" name="price"></div>
+      <div>
+        <label th:for="pname">상품명</label>
+        <input type="text" th:field="*{pname}">
+        <div class="fieldError" th:errors="*{pname}"></div>
+      </div>
+      <div>
+        <label th:for="count">수량</label>
+        <input type="text" th:field="*{count}">
+        <div class="fieldError" th:errors="*{count}"></div>
+      </div>
+      <div>
+        <label th:for="price">가격</label>
+        <input type="text" th:field="*{price}">
+        <div class="fieldError" th:errors="*{price}"></div>
+      </div>
       <div><button type="submit">저장</button></div>
     </div>
   </form>
